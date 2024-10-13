@@ -9,8 +9,8 @@ function Authenticate() {
 
   return (
     <>
-      <div className="mx-auto max-w-[350px] space-y-6">
-        
+      <div className="mx-auto max-w-[350px] space-y-6 ">
+      <div className="flex flex-center items-center w-full">
         <Button
           onClick={() => setPage("SignIn")}
           variant={page == "SignIn" ? "default":"outline"}
@@ -24,6 +24,7 @@ function Authenticate() {
         >
           Sign Up
         </Button>
+        </div>
       {page == "SignUp" ? <SignUp /> : <SignIn />}
 
       </div>
