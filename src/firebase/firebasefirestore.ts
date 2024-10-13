@@ -1,295 +1,295 @@
-import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
-import { app } from "./firebaseconfig";
-import { auth } from "./firebaseauthentication";
-import { blogType, updateProfileType } from "@/types/types";
-import { toast } from "react-toastify";
-import {
-  getDownloadURL,
-  getStorage,
-  ref,
-  uploadBytesResumable,
-} from "firebase/storage";
+// import {
+//   addDoc,
+//   collection,
+//   deleteDoc,
+//   doc,
+//   setDoc,
+//   updateDoc,
+// } from "firebase/firestore";
+// import { getFirestore } from "firebase/firestore";
+// import { app } from "./firebaseconfig";
+// import { auth } from "./firebaseauthentication";
+// // import { blogType, updateProfileType } from "@/types/types";
+// // import { toast } from "react-toastify";
+// import {
+//   getDownloadURL,
+//   getStorage,
+//   ref,
+//   uploadBytesResumable,
+// } from "firebase/storage";
 
-export const db = getFirestore(app);
-export const storage = getStorage(app);
+// export const db = getFirestore(app);
+// export const storage = getStorage(app);
 
-export async function saveUser(
-  email: string | null | undefined,
-  userName: string | null,
-  uid: string,
-) {
-  const reference = doc(db, "users", uid);
-  const data = {
-    email: email,
-    userName: userName,
-    uid: uid,
-  };
-  await setDoc(reference, data);
-  console.log("created");
+// export async function saveUser(
+//   email: string | null | undefined,
+//   userName: string | null,
+//   uid: string,
+// ) {
+//   const reference = doc(db, "users", uid);
+//   const data = {
+//     email: email,
+//     userName: userName,
+//     uid: uid,
+//   };
+//   await setDoc(reference, data);
+//   console.log("created");
   
-}
+// }
 
-export async function updateUser(
-  email: string | null | undefined,
-  userName: string | null,
-  uid: string,
-  photoURL?: string
-) {
-  const reference = doc(db, "users", uid);
-  const data = {
-    email: email,
-    userName: userName,
-    uid: uid,
-    imageURL: photoURL,
-  };
-  await updateDoc(reference, data);
-}
-
-
-export async function deleteBlog(id: string) {
-  await deleteDoc(doc(db, "blogs", id));
-}
-
-export async function saveBlog({
-  title,
-  file,
-  tag,
-  mark,
-  slug,
-  createdDate,
-}: blogType) {
-  const uid = auth.currentUser?.uid;
-  if (!uid) {
-    toast.error("User is not authenticated!");
-    return;
-  }
-
-  const collectionRef = collection(db, "blogs");
-
-  try {
-    const uploadImage = async () => {
-      if (!file) {
-        return;
-      }
-      console.log(file);
-      const imageRef = ref(
-        storage,
-        `uploads/images/${Date.now()}-${file.name}`
-      );
-      const uploadTask = uploadBytesResumable(imageRef, file);
-
-      return new Promise((resolve, reject) => {
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            const progress =
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log("Upload is " + progress + "% done");
-          },
-          (error) => {
-            console.error("Upload error: ", error);
-            reject(error);
-          },
-          async () => {
-            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-            console.log("File available at", downloadURL);
-            resolve(downloadURL);
-          }
-        );
-      });
-    };
-
-    const imageURL = await uploadImage();
-
-    const newBlog = {
-      title,
-      tag,
-      mark,
-      slug,
-      createdDate,
-      uid,
-      imageURL,
-    };
-
-    const docRef = await addDoc(collectionRef, newBlog);
-
-    const docRefToUpdate = doc(db, "blogs", docRef.id);
-    await updateDoc(docRefToUpdate, {
-      firebaseID: docRef.id,
-    });
-
-    toast.success("Blog Added Successfully!");
-  } catch (error) {
-    console.error("Error adding blog: ", error);
-    toast.error("Couldn't add blog!");
-  }
-}
-
-export async function updateMyProfile( { picture, name, fathername, phonenumber, DOB, bio,
-}: updateProfileType) {
+// export async function updateUser(
+//   email: string | null | undefined,
+//   userName: string | null,
+//   uid: string,
+//   photoURL?: string
+// ) {
+//   const reference = doc(db, "users", uid);
+//   const data = {
+//     email: email,
+//     userName: userName,
+//     uid: uid,
+//     imageURL: photoURL,
+//   };
+//   await updateDoc(reference, data);
+// }
 
 
-  const uid = auth.currentUser?.uid;
+// export async function deleteBlog(id: string) {
+//   await deleteDoc(doc(db, "blogs", id));
+// }
 
-  if (!uid) {
-    toast.error("User is not authenticated!");
-    return;
-  }
+// export async function saveBlog({
+//   title,
+//   file,
+//   tag,
+//   mark,
+//   slug,
+//   createdDate,
+// }: blogType) {
+//   const uid = auth.currentUser?.uid;
+//   if (!uid) {
+//     toast.error("User is not authenticated!");
+//     return;
+//   }
 
-  const collectionRef = doc(db, "users", uid);
+//   const collectionRef = collection(db, "blogs");
 
-  if (!picture){
-    const user = {
-      userName: name,
-      fathername,
-      phonenumber,
-      DOB,
-      bio,
-    };
-    await updateDoc(collectionRef, user);
-    toast.success("Updated Successfully!");
-    return
-  }
+//   try {
+//     const uploadImage = async () => {
+//       if (!file) {
+//         return;
+//       }
+//       console.log(file);
+//       const imageRef = ref(
+//         storage,
+//         `uploads/images/${Date.now()}-${file.name}`
+//       );
+//       const uploadTask = uploadBytesResumable(imageRef, file);
 
-  try {
-    const uploadImage = async () => {
-      if (!picture) {
-        return;
-      }
-      console.log(picture);
-      const imageRef = ref(
-        storage,
-        `uploads/images/${crypto.randomUUID()}-${picture.name}`
-      );
-      const uploadTask = uploadBytesResumable(imageRef, picture);
+//       return new Promise((resolve, reject) => {
+//         uploadTask.on(
+//           "state_changed",
+//           (snapshot) => {
+//             const progress =
+//               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+//             console.log("Upload is " + progress + "% done");
+//           },
+//           (error) => {
+//             console.error("Upload error: ", error);
+//             reject(error);
+//           },
+//           async () => {
+//             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+//             console.log("File available at", downloadURL);
+//             resolve(downloadURL);
+//           }
+//         );
+//       });
+//     };
 
-      return new Promise((resolve, reject) => {
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            const progress =
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log("Upload is " + progress + "% done");
-          },
-          (error) => {
-            console.error("Upload error: ", error);
-            reject(error);
-          },
-          async () => {
-            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-            console.log("File available at", downloadURL);
-            resolve(downloadURL);
-          }
-        );
-      });
-    };
+//     const imageURL = await uploadImage();
 
-    const imageURL = await uploadImage();
+//     const newBlog = {
+//       title,
+//       tag,
+//       mark,
+//       slug,
+//       createdDate,
+//       uid,
+//       imageURL,
+//     };
 
-    if(!imageURL) return toast.error("error uploading image")
+//     const docRef = await addDoc(collectionRef, newBlog);
 
+//     const docRefToUpdate = doc(db, "blogs", docRef.id);
+//     await updateDoc(docRefToUpdate, {
+//       firebaseID: docRef.id,
+//     });
 
-    const user = {
-      imageURL,
-      userName: name,
-      fathername,
-      phonenumber,
-      DOB,
-      bio,
-    };
-    await updateDoc(collectionRef, user);
+//     toast.success("Blog Added Successfully!");
+//   } catch (error) {
+//     console.error("Error adding blog: ", error);
+//     toast.error("Couldn't add blog!");
+//   }
+// }
+
+// export async function updateMyProfile( { picture, name, fathername, phonenumber, DOB, bio,
+// }: updateProfileType) {
 
 
-    toast.success("Updated Successfully!");
-  } catch (error) {
-    console.error("Error Updating : ", error);
-    toast.error(`Error Updating! ${error}`);
-  }
-}
-export async function updateBlog({
-  title,
-  tag,
-  mark,
-  editedDate,
-  firebaseID,
-  file
-}: blogType) {
-  const uid = auth.currentUser?.uid;
+//   const uid = auth.currentUser?.uid;
 
-  if (!uid) {
-    toast.error("User is not authenticated!");
-    return;
-  }
+//   if (!uid) {
+//     toast.error("User is not authenticated!");
+//     return;
+//   }
 
-  if (!firebaseID) {
-    toast.error("Invalid blog ID!");
-    return;
-  }
+//   const collectionRef = doc(db, "users", uid);
 
-  try {
-    const uploadImage = async () => {
-      if (!file) {
-        return null; 
-      }
-      console.log(file);
-      const imageRef = ref(
-        storage,
-        `uploads/images/${Date.now()}-${file.name}`
-      );
-      const uploadTask = uploadBytesResumable(imageRef, file);
+//   if (!picture){
+//     const user = {
+//       userName: name,
+//       fathername,
+//       phonenumber,
+//       DOB,
+//       bio,
+//     };
+//     await updateDoc(collectionRef, user);
+//     toast.success("Updated Successfully!");
+//     return
+//   }
 
-      return new Promise((resolve, reject) => {
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            const progress =
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log("Upload is " + progress + "% done");
-          },
-          (error) => {
-            console.error("Upload error: ", error);
-            reject(error);
-          },
-          async () => {
-            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-            console.log("File available at", downloadURL);
-            resolve(downloadURL);
-          }
-        );
-      });
-    };
+//   try {
+//     const uploadImage = async () => {
+//       if (!picture) {
+//         return;
+//       }
+//       console.log(picture);
+//       const imageRef = ref(
+//         storage,
+//         `uploads/images/${crypto.randomUUID()}-${picture.name}`
+//       );
+//       const uploadTask = uploadBytesResumable(imageRef, picture);
 
-    const imageURL = await uploadImage();
-    console.log(imageURL);
+//       return new Promise((resolve, reject) => {
+//         uploadTask.on(
+//           "state_changed",
+//           (snapshot) => {
+//             const progress =
+//               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+//             console.log("Upload is " + progress + "% done");
+//           },
+//           (error) => {
+//             console.error("Upload error: ", error);
+//             reject(error);
+//           },
+//           async () => {
+//             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+//             console.log("File available at", downloadURL);
+//             resolve(downloadURL);
+//           }
+//         );
+//       });
+//     };
 
-    const collectionRef = doc(db, "blogs", firebaseID);
+//     const imageURL = await uploadImage();
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const newBlog: any = {
-      title,
-      tag,
-      mark,
-      uid,
-      editedDate,
-    };
+//     if(!imageURL) return toast.error("error uploading image")
 
-    if (imageURL) {
-      newBlog.imageURL = imageURL;
-    }
 
-    await updateDoc(collectionRef, newBlog);
+//     const user = {
+//       imageURL,
+//       userName: name,
+//       fathername,
+//       phonenumber,
+//       DOB,
+//       bio,
+//     };
+//     await updateDoc(collectionRef, user);
 
-    toast.success("Blog edited successfully!");
-  } catch (error) {
-    console.error("Error updating blog:", error);
-    toast.error("Failed to edit the blog.");
-  }
-}
+
+//     toast.success("Updated Successfully!");
+//   } catch (error) {
+//     console.error("Error Updating : ", error);
+//     toast.error(`Error Updating! ${error}`);
+//   }
+// }
+// export async function updateBlog({
+//   title,
+//   tag,
+//   mark,
+//   editedDate,
+//   firebaseID,
+//   file
+// }: blogType) {
+//   const uid = auth.currentUser?.uid;
+
+//   if (!uid) {
+//     toast.error("User is not authenticated!");
+//     return;
+//   }
+
+//   if (!firebaseID) {
+//     toast.error("Invalid blog ID!");
+//     return;
+//   }
+
+//   try {
+//     const uploadImage = async () => {
+//       if (!file) {
+//         return null; 
+//       }
+//       console.log(file);
+//       const imageRef = ref(
+//         storage,
+//         `uploads/images/${Date.now()}-${file.name}`
+//       );
+//       const uploadTask = uploadBytesResumable(imageRef, file);
+
+//       return new Promise((resolve, reject) => {
+//         uploadTask.on(
+//           "state_changed",
+//           (snapshot) => {
+//             const progress =
+//               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+//             console.log("Upload is " + progress + "% done");
+//           },
+//           (error) => {
+//             console.error("Upload error: ", error);
+//             reject(error);
+//           },
+//           async () => {
+//             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+//             console.log("File available at", downloadURL);
+//             resolve(downloadURL);
+//           }
+//         );
+//       });
+//     };
+
+//     const imageURL = await uploadImage();
+//     console.log(imageURL);
+
+//     const collectionRef = doc(db, "blogs", firebaseID);
+
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//     const newBlog: any = {
+//       title,
+//       tag,
+//       mark,
+//       uid,
+//       editedDate,
+//     };
+
+//     if (imageURL) {
+//       newBlog.imageURL = imageURL;
+//     }
+
+//     await updateDoc(collectionRef, newBlog);
+
+//     toast.success("Blog edited successfully!");
+//   } catch (error) {
+//     console.error("Error updating blog:", error);
+//     toast.error("Failed to edit the blog.");
+//   }
+// }
