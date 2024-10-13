@@ -1,20 +1,31 @@
-'use client'
+"use client";
 
-
-import { Button } from "@/components/ui/button"
-
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function EmailVerification() {
-
-
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Email Verification</h2>
+    <div className="max-w-[350px] mx-auto p-6 h-full flex flex-col justify-center ">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold mb-4">
+            Email Verification
+          </CardTitle>
+          <CardDescription>
+            Check your Inbox!
+          </CardDescription>
+        </CardHeader>
 
-          <Button type="submit" >
-            Verify Email
-          </Button>
-        
+        <CardContent>
+          <Button type="submit" className="w-full">Resend Email</Button>
+        </CardContent>
+      </Card>
     </div>
-  )
+  );
 }

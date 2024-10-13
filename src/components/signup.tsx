@@ -7,28 +7,31 @@ function SignUp() {
     <>
       <div className="space-y-2 text-center">
         <h1 className="text-3xl font-bold">Sign Up</h1>
-        <p className="text-gray-500 dark:text-gray-400">
-          Create Account
-        </p>
       </div>
       <div className="space-y-4">
-      <div className="space-y-2">
-          <Label htmlFor="name">Name</Label>
-          <Input id="name" type="text" placeholder="Uzair Rehan" required />
-        </div>
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" required />
+          <Input
+            id="email"
+            type="email"
+            placeholder="uzairrehann@gmail.com"
+            required
+          />
         </div>
         <div className="space-y-2">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" type="password" required />
+          <Input
+            id="password"
+            type="password"
+            required
+            placeholder="••••••••"
+          />
         </div>
         <Button type="submit" className="w-full">
-          Create Account
+          Sign up
         </Button>
-        <Button variant="outline" className="w-full">
-        Continue with Google
+        <Button variant="destructive" className="w-full">
+          Continue with Google
         </Button>
       </div>
     </>
