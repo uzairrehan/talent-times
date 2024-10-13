@@ -7,7 +7,7 @@ import {
   signOut,
   // updateProfile,
   sendPasswordResetEmail,
-  sendEmailVerification,
+  // sendEmailVerification,
 } from "firebase/auth";
 import { app } from "./firebaseconfig";
 // import { toast } from "react-toastify";
@@ -24,7 +24,7 @@ export function signupWithEmailPassword(
 ) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      const { email, uid } = userCredential.user;
+      // const { email, uid } = userCredential.user;
       // console.log(email, uid, userName, "user created successfully.");
       // updateProfile(userCredential.user, {
       //   displayName: userName,
@@ -136,13 +136,13 @@ export function passwordReset(email: string) {
 }
 
 
-export async function emailVerify(user) {
-  sendEmailVerification(user)
-  .then(() => {
-    alert("Verification email sent! Please check your inbox.");
-  })
-  .catch((error) => {
-    console.error(error);
-    alert("Error sending verification email.");
-  });
-}
+// export async function emailVerify(user) {
+//   sendEmailVerification(user)
+//   .then(() => {
+//     alert("Verification email sent! Please check your inbox.");
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//     alert("Error sending verification email.");
+//   });
+// }
