@@ -32,7 +32,7 @@ function MoreInfo() {
           <form>
             <div className="grid w-full items-center gap-5">
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name">User / Company Name </Label>
                 <Input
                   id="name"
                   placeholder="Uzair Rehan"
@@ -41,25 +41,7 @@ function MoreInfo() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="Location">Location</Label>
-                <Input
-                  id="Location"
-                  placeholder="Karachi"
-                  type="text"
-                  required
-                />
-              </div>
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="Phone Number">Phone Number</Label>
-                <Input
-                  id="Phone Number"
-                  placeholder="+92-0000000000"
-                  type="number"
-                  required
-                />
-              </div>
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="Type">Type</Label>
+                <Label htmlFor="Type">Account Type</Label>
                 <Select required>
                   <SelectTrigger>
                     <SelectValue placeholder="Type" />
