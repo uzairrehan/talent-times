@@ -11,7 +11,7 @@ import {
 
 export default function EmailVerification() {
   return (
-    <div className="max-w-[350px] mx-auto p-6 h-full flex flex-col justify-center ">
+    <div className="max-w-[350px] mx-auto p-4 h-full flex flex-col justify-center ">
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl font-bold mb-4">

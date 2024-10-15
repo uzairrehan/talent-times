@@ -90,10 +90,10 @@ export default function Company() {
   const route = useRouter();
   return (
     <>
-      <div className="min-h-screen flex items-center flex-col justify-center gap-4 p-4 content-center">
-        <Table className="max-w-screen-md ">
+        <Table className="block w-auto">
           <TableHeader>
             <TableRow>
+              <TableHead className="w-[100px]">No.</TableHead>
               <TableHead className="w-[100px]">Title</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Deadline</TableHead>
@@ -106,9 +106,10 @@ export default function Company() {
             {jobs.map(
               ({ title, status, deadline, applications, firebaseID }) => (
                 <TableRow key={firebaseID}>
+                  <TableCell className="font-bold">{1}</TableCell>
                   <TableCell className="font-bold">{title}</TableCell>
                   <TableCell>
-                    <Badge>{status}</Badge>
+                    <Badge variant={"outline"}>{status}</Badge>
                   </TableCell>
                   <TableCell>{deadline}</TableCell>
                   <TableCell>
@@ -125,7 +126,7 @@ export default function Company() {
 
                       onClick={() => route.push(`seedetailedjob/${firebaseID}`)}
                     >
-                      <ArrowUpRight className="h-4 w-4" />
+                      <ArrowUpRight className="h-3 w-3" />
                     </Button>
                   </TableCell>
                   <TableCell>
@@ -133,7 +134,7 @@ export default function Company() {
                     size={"sm"}
                       onClick={() => route.push(`company/editjob/${firebaseID}`)}
                     >
-                      <Edit className="h-4 w-4" />
+                      <Edit className="h-3 w-3" />
                     </Button>
                   </TableCell>
                 </TableRow>
@@ -141,7 +142,6 @@ export default function Company() {
             )}
           </TableBody>
         </Table>
-      </div>
     </>
   );
 }

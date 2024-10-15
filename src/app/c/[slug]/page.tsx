@@ -66,8 +66,8 @@ export default function CompanyProfile() {
 
   return (<>
   <Navbar/>
-    <div className="container mx-auto py-8">
-      <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
+    <div className="container mx-auto p-4">
+      <div className="flex flex-col md:flex-row items-center justify-center md:items-start gap-6 mb-8">
         <Avatar className="w-24 h-24">
           <AvatarImage src={company.logo} alt={company.name} />
           <AvatarFallback>{company.name.slice(0, 2)}</AvatarFallback>
