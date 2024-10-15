@@ -36,14 +36,14 @@ export default function Navbar() {
             className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
             prefetch={false}
           >
-            Create Job
+            Post Job
           </Link>
           <Link
             href="/company"
             className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
             prefetch={false}
           >
-            All Jobs
+            Company Jobs
           </Link>
           {/* <Link
             href="#"
@@ -93,14 +93,14 @@ export default function Navbar() {
                   className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
                   prefetch={false}
                 >
-                  Create Job
+                  Post Job
                 </Link>
                 <Link
                   href="/company"
                   className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
                   prefetch={false}
                 >
-                  All Jobs
+                  Company Jobs
                 </Link>
                 {/* <Link
                   href="#"

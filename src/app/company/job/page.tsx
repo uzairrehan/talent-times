@@ -11,13 +11,11 @@ import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
-import Navbar from "@/components/navbar";
 
 export default function JobCreationForm() {
   const [deadline, setDeadline] = useState<Date>()
 
   return (<>
-  <Navbar/>
     <Card className="w-full max-w-4xl mx-auto border-none">
       <CardHeader>
         <CardTitle className="text-2xl">Create New Job Posting</CardTitle>

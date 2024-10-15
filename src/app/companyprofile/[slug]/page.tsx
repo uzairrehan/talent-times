@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { CalendarDays, MapPin, Users, Briefcase, Globe, Phone, Mail, Facebook, Twitter, Linkedin } from "lucide-react"
+import Navbar from "@/components/navbar"
 
 export default function CompanyProfile() {
   
@@ -63,7 +64,8 @@ export default function CompanyProfile() {
     ],
   }
 
-  return (
+  return (<>
+  <Navbar/>
     <div className="container mx-auto py-8">
       <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
         <Avatar className="w-24 h-24">
@@ -193,5 +195,6 @@ export default function CompanyProfile() {
         </TabsContent>
       </Tabs>
     </div>
+    </>
   )
 }

@@ -1,9 +1,10 @@
-import Navbar from "@/components/navbar";
 
 function JobChild() {
     return ( <>
-    <Navbar/>
-    JOb</> );
+
+    JOb
+    
+    </> );
 }
 
 export default JobChild;
