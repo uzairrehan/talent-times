@@ -1,12 +1,13 @@
-// import Navbar from "@/components/navbar";
-import { Card, CardContent,CardHeader, CardTitle } from "@/components/ui/card"
-import { Construction } from "lucide-react"
+import Navbar from "@/components/navbar";
+import JobCard from "@/components/jobcard";
+// import { Card, CardContent,CardHeader, CardTitle } from "@/components/ui/card"
+// import { Construction } from "lucide-react"
 
 export default function Home() {
-  return (<>
-      {/* <Navbar/> */}
-
-    <div className="min-h-screen flex items-center justify-center">
+  return (
+    <>
+      <Navbar />
+      {/* <div className="min-h-screen flex items-center justify-center">
       <Card className="w-[350px]">
         <CardHeader>
           <CardTitle className="flex items-center justify-center space-x-2">
@@ -21,6 +22,122 @@ export default function Home() {
         </CardContent>
 
       </Card>
-    </div>
-  </>);
-} 
+    </div> */}
+      <div className="min-h-screen flex items-center flex-col justify-center gap-4 p-4">
+        <JobCard
+          title={"Software Engineer"}
+          companyName={"Acme Inc"}
+          location={"San Francisco, CA"}
+          fromSalary={120000}
+          toSalary={150000}
+          description={
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, "
+          }
+          datePosted={new Date()}
+          badges={"2435345"}
+          easyApplyLink={"534534"}
+          firebaseID={"6435786485"}
+        />
+                <JobCard
+          title={"Software Engineer"}
+          companyName={"Acme Inc"}
+          location={"San Francisco, CA"}
+          fromSalary={120000}
+          toSalary={150000}
+          description={
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, "
+          }
+          datePosted={new Date()}
+          badges={"2435345"}
+          easyApplyLink={"534534"}
+          firebaseID={"6435786485"}
+        />
+                <JobCard
+          title={"Software Engineer"}
+          companyName={"Acme Inc"}
+          location={"San Francisco, CA"}
+          fromSalary={120000}
+          toSalary={150000}
+          description={
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, "
+          }
+          datePosted={new Date()}
+          badges={"2435345"}
+          easyApplyLink={"534534"}
+          firebaseID={"6435786485"}
+        />
+                <JobCard
+          title={"Software Engineer"}
+          companyName={"Acme Inc"}
+          location={"San Francisco, CA"}
+          fromSalary={120000}
+          toSalary={150000}
+          description={
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, "
+          }
+          datePosted={new Date()}
+          badges={"2435345"}
+          easyApplyLink={"534534"}
+          firebaseID={"6435786485"}
+        />
+                <JobCard
+          title={"Software Engineer"}
+          companyName={"Acme Inc"}
+          location={"San Francisco, CA"}
+          fromSalary={120000}
+          toSalary={150000}
+          description={
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, "
+          }
+          datePosted={new Date()}
+          badges={"2435345"}
+          easyApplyLink={"534534"}
+          firebaseID={"6435786485"}
+        />
+                <JobCard
+          title={"Software Engineer"}
+          companyName={"Acme Inc"}
+          location={"San Francisco, CA"}
+          fromSalary={120000}
+          toSalary={150000}
+          description={
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, "
+          }
+          datePosted={new Date()}
+          badges={"2435345"}
+          easyApplyLink={"534534"}
+          firebaseID={"6435786485"}
+        />
+                <JobCard
+          title={"Software Engineer"}
+          companyName={"Acme Inc"}
+          location={"San Francisco, CA"}
+          fromSalary={120000}
+          toSalary={150000}
+          description={
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, "
+          }
+          datePosted={new Date()}
+          badges={"2435345"}
+          easyApplyLink={"534534"}
+          firebaseID={"6435786485"}
+        />
+        
+        <JobCard
+          title={"Software Engineer"}
+          companyName={"Acme Inc"}
+          location={"San Francisco, CA"}
+          fromSalary={120000}
+          toSalary={150000}
+          description={
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque fugiat, beatae rerum praesentium illum labore, "
+          }
+          datePosted={new Date()}
+          badges={"2435345"}
+          easyApplyLink={"534534"}
+          firebaseID={"6435786485"}
+        />
+      </div>
+    </>
+  );
+}
