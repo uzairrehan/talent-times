@@ -23,7 +23,7 @@ export default function JobCard({
   const route = useRouter();
 
   return (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-full max-w-5xl">
       <CardContent className="p-6">
         <div className="flex flex-col sm:flex-row justify-between gap-4">
           <div className="space-y-4">
