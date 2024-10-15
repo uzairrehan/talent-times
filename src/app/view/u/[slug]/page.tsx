@@ -3,13 +3,15 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { GithubIcon, LinkedinIcon, MailIcon, DownloadIcon, GlobeIcon, PhoneIcon, MapPinIcon, CalendarIcon } from "lucide-react"
-import Navbar from "@/components/navbar"
+import { CalendarIcon, MapPinIcon, MailIcon, PhoneIcon, DownloadIcon, GlobeIcon, LinkedinIcon, GithubIcon } from "lucide-react"
+// import { GithubIcon, LinkedinIcon, MailIcon, DownloadIcon, GlobeIcon, PhoneIcon, MapPinIcon, CalendarIcon } from "lucide-react"
+// import UserNavbar from "@/components/usernavbar"
+// import CompanyNavbar from "@/components/companynavbar"
 
 export default function ExpandedProfileView() {
   return (
     <>
-    <Navbar/>
+    {/* {user.role === "company" ? <CompanyNavbar/> :<UserNavbar/> } */}
     <Card className="w-full max-w-4xl mx-auto border-none">
       <CardHeader className="flex flex-col sm:flex-row items-center gap-4">
         <Avatar className="w-32 h-32">

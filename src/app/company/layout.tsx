@@ -1,6 +1,7 @@
 "use client";
 
-import Navbar from "@/components/navbar";
+import CompanyNavbar from "@/components/companynavbar";
+
 
 export default function CompanyLayout({
   children,
@@ -8,7 +9,7 @@ export default function CompanyLayout({
   children: React.ReactNode;
 }>) {
   return <>
-  <Navbar/>
+  <CompanyNavbar/>
   {children}
   </>;
 }

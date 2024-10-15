@@ -1,9 +1,9 @@
-import Navbar from "@/components/navbar";
+import UserNavbar from "@/components/usernavbar";
 
 function UserLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Navbar />
+      <UserNavbar />
       {children}
     </>
   );

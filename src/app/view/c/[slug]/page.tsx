@@ -4,7 +4,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { CalendarDays, MapPin, Users, Briefcase, Globe, Phone, Mail, Facebook, Twitter, Linkedin } from "lucide-react"
-import Navbar from "@/components/navbar"
+// import UserNavbar from "@/components/usernavbar"
+// import CompanyNavbar from "@/components/companynavbar"
 
 export default function CompanyProfile() {
   
@@ -65,7 +66,7 @@ export default function CompanyProfile() {
   }
 
   return (<>
-  <Navbar/>
+    {/* {user.role === "company" ? <CompanyNavbar/> :<UserNavbar/> } */}
     <div className="container mx-auto p-4">
       <div className="flex flex-col md:flex-row items-center justify-center md:items-start gap-6 mb-8">
         <Avatar className="w-24 h-24">
