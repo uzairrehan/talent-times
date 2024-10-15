@@ -29,7 +29,7 @@ export default function JobCard({
             <div>
               <h3 className="text-2xl font-bold">{title}</h3>
               <Link
-                href={`/companyprofile/${firebaseID}`}
+                href={`/view/c/${firebaseID}`}
                 className="text-blue-500 hover:underline inline-flex items-center"
               >
                 {companyName}
@@ -53,7 +53,7 @@ export default function JobCard({
             <div className="space-y-2 w-full sm:w-auto">
               <Button
                 className="w-full flex gap-2"
-                onClick={() => route.push(`/easyapply/${easyApplyLink}`)}
+                onClick={() => route.push(`/user/apply/${easyApplyLink}`)}
               >
                 <ArrowBigRight className="ml-1 h-4 w-4"/>
                 Easy Apply
@@ -65,7 +65,7 @@ export default function JobCard({
               <Button
                 variant="outline"
                 className="w-full flex gap-2"
-                onClick={() => route.push(`/seedetailedjob/${firebaseID}`)}
+                onClick={() => route.push(`/view/job/${firebaseID}`)}
               >
                 <Eye className="ml-1 h-4 w-4"/>
                 See Details
