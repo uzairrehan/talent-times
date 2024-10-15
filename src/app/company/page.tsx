@@ -85,63 +85,79 @@ const jobs = [
   },
 ];
 
-
 export default function Company() {
   const route = useRouter();
   return (
     <>
-        <Table className="block w-auto">
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[100px]">No.</TableHead>
-              <TableHead className="w-[100px]">Title</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Deadline</TableHead>
-              <TableHead>Applications</TableHead>
-              <TableHead>See Details</TableHead>
-              <TableHead>Edit</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {jobs.map(
-              ({ title, status, deadline, applications, firebaseID }) => (
-                <TableRow key={firebaseID}>
-                  <TableCell className="font-bold">{1}</TableCell>
-                  <TableCell className="font-bold">{title}</TableCell>
-                  <TableCell>
-                    <Badge variant={"outline"}>{status}</Badge>
-                  </TableCell>
-                  <TableCell>{deadline}</TableCell>
-                  <TableCell>
-                    <Button variant="secondary" 
-                    size={"sm"}
-                    
-                    onClick={() => route.push(`company/seeapplicants/${firebaseID}`)}>
-                    {applications}
-                    </Button>
+      <div className="flex justify-center w-full">
+        <div className="w-auto">
+          <Table className="mx-auto">
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px] text-center">No.</TableHead>
+                <TableHead className="w-[100px] text-center">Title</TableHead>
+                <TableHead className="text-center">Status</TableHead>
+                <TableHead className="text-center">Deadline</TableHead>
+                <TableHead className="text-center">Applications</TableHead>
+                <TableHead className="text-center">See Details</TableHead>
+                <TableHead className="text-center">Edit</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {jobs.map(
+                (
+                  { title, status, deadline, applications, firebaseID },
+                  index
+                ) => (
+                  <TableRow key={firebaseID}>
+                    <TableCell className="font-bold text-center">
+                      {index + 1}
                     </TableCell>
-                  <TableCell>
-                    <Button
-                    size={"sm"}
-
-                      onClick={() => route.push(`seedetailedjob/${firebaseID}`)}
-                    >
-                      <ArrowUpRight className="h-3 w-3" />
-                    </Button>
-                  </TableCell>
-                  <TableCell>
-                    <Button
-                    size={"sm"}
-                      onClick={() => route.push(`company/editjob/${firebaseID}`)}
-                    >
-                      <Edit className="h-3 w-3" />
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              )
-            )}
-          </TableBody>
-        </Table>
+                    <TableCell className="font-bold text-center">
+                      {title}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <Badge variant={"outline"}>{status}</Badge>
+                    </TableCell>
+                    <TableCell className="text-center">{deadline}</TableCell>
+                    <TableCell className="text-center">
+                      <Button
+                        variant="secondary"
+                        size={"sm"}
+                        onClick={() =>
+                          route.push(`company/seeapplicants/${firebaseID}`)
+                        }
+                      >
+                        {applications}
+                      </Button>
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <Button
+                        size={"sm"}
+                        onClick={() =>
+                          route.push(`seedetailedjob/${firebaseID}`)
+                        }
+                      >
+                        <ArrowUpRight className="h-3 w-3" />
+                      </Button>
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <Button
+                        size={"sm"}
+                        onClick={() =>
+                          route.push(`company/editjob/${firebaseID}`)
+                        }
+                      >
+                        <Edit className="h-3 w-3" />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                )
+              )}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
     </>
   );
 }
