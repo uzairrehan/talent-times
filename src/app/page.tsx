@@ -1,8 +1,11 @@
+// import Navbar from "@/components/navbar";
 import { Card, CardContent,CardHeader, CardTitle } from "@/components/ui/card"
 import { Construction } from "lucide-react"
 
 export default function Home() {
   return (<>
+      {/* <Navbar/> */}
+
     <div className="min-h-screen flex items-center justify-center">
       <Card className="w-[350px]">
         <CardHeader>
@@ -20,4 +23,4 @@ export default function Home() {
       </Card>
     </div>
   </>);
-}
+} 

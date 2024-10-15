@@ -1,6 +1,9 @@
-function Job() {
+import Navbar from "@/components/navbar";
+
+function JobChild() {
     return ( <>
+    <Navbar/>
     JOb</> );
 }
 
-export default Job;
+export default JobChild;
